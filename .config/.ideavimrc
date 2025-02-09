@@ -1,0 +1,216 @@
+""" set default handlers
+sethandler <C-a> a:vim
+sethandler <C-b> a:vim
+sethandler <C-c> a:vim
+sethandler <C-d> a:vim
+sethandler <C-e> a:vim
+sethandler <C-f> a:vim
+sethandler <C-g> a:vim
+sethandler <C-h> a:vim
+sethandler <C-i> a:vim
+sethandler <C-j> a:ide
+sethandler <C-k> a:ide
+sethandler <C-l> a:vim
+sethandler <C-m> a:vim
+sethandler <C-n> a:vim
+sethandler <C-o> a:vim
+sethandler <C-p> a:vim
+sethandler <C-q> a:vim
+sethandler <C-r> a:vim
+sethandler <C-s> a:vim
+sethandler <C-t> a:vim
+sethandler <C-u> a:vim
+sethandler <C-v> a:vim
+sethandler <C-v> a:vim
+sethandler <C-w> a:vim
+sethandler <C-x> a:vim
+sethandler <C-y> a:vim
+sethandler <C-z> a:vim
+
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set hlsearch
+set showmode
+set number relativenumber
+set visualbell
+set highlightedyank
+set ignorecase
+" Enable smart case when search
+set smartcase
+
+""" Plugins connections
+Plug 'machakann/vim-highlightedyank'
+Plug 'preservim/nerdtree'
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" vim-multiple-cursors
+set multiple-cursors
+" nmap <C-w> <Plug>NextWholeOccurrence
+" xmap <C-w> <Plug>NextWholeOccurrence
+" nmap <C-a> <Plug>AllWholeOccurrences
+" xmap <C-a> <Plug>AllWholeOccurrences
+" nmap <C-x> <Plug>SkipOccurrence
+" xmap <C-x> <Plug>SkipOccurrence
+" nmap <C-r> <Plug>RemoveOccurrence
+" xmap <C-r> <Plug>RemoveOccurrence
+
+" WhichKey configuration (plugin is toggled by <leader>8)
+let g:WhichKey_FontSize = 12
+let g:WhichKey_PrefixColor = "#a403fe"
+let g:WhichKey_CommandColor = "#01ffff"
+let g:WhichKey_PrefixStyle = "bold"
+let g:WhichKey_KeyStyle = "italic"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_ShowTypedSequence = "true"
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+set clipboard+=unnamed
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set scrolloff=5
+
+""" easy motion mappings
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+""" Cancel search highlight
+map <leader><CR> :nohlsearch<CR>
+
+""" Idea specific mappings
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>e <Action>(SelectInProjectView)
+let g:WhichKeyDesc_toggle_distraction_free_mode = "<leader>z Toggle distraction free mode"
+let g:WhichKeyDesc_select_in_project = "<leader>e Select in project"
+
+map <S-Space> <Action>(GotoNextError)
+
+" Move between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" code refactoring
+:map <leader>rr <Action>(RenameElement)
+:map <leader>RR <Action>(Refactorings.QuickListPopupAction)
+:map <leader>sw <Action>(SurroundWith)
+:map <leader>oi <Action>(OptimizeImports)
+let g:WhichKeyDesc_rename_element = "<leader>rr Rename element"
+let g:WhichKeyDesc_refactors = "<leader>RR Refactorings"
+let g:WhichKeyDesc_surround_with = "<leader>sw Surround with"
+let g:WhichKeyDesc_optimize_import = "<leader>oi Optimize import"
+
+" breakpoints
+:map <leader>ub <Action>(ToggleLineBreakpoint)
+:map <leader>us <Action>(ViewBreakpoints)
+:map <leader>ur <Action>(Debugger.RemoveAllBreakpoints)
+let g:WhichKeyDesc_toggle_line_breakpoint = "<leader>ub Toggle line breakpoint"
+let g:WhichKeyDesc_view_breakpoints = "<leader>us View breakpoints"
+let g:WhichKeyDesc_remove_all_breakpoints = "<leader>ur Remove all breakpoints"
+
+" bookmarks
+nmap <leader>bs <Action>(ShowBookmarks)
+nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
+nmap <leader>bb <Action>(ToggleBookmark)
+nmap <leader>be <Action>(EditBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>bn <Action>(GotoNextBookmark)
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks_menu = "<leader>bm Bookmark Menu"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bs Show Bookmarks"
+let g:WhichKeyDesc_bookmarks_tool = "<leader>bt Bookmark Tool"
+let g:WhichKeyDesc_bookmarks_toggle_bookmark = "<leader>bb Toggle Bookmark"
+let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
+let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
+let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
+
+" run stuff
+:map <leader>cg <Action>(ChooseRunConfiguration)
+:map <leader>dg <Action>(ChooseDebugConfiguration)
+:map <leader>1 <Action>(Run)
+:map <leader>2 <Action>(Debug)
+:map <leader>0 <Action>(Stop)
+let g:WhichKeyDesc_choose_run_configuration = "<leader>cg Choose run configuration"
+let g:WhichKeyDesc_choose_debug_configuration = "<leader>dg Choose debug configuration"
+let g:WhichKeyDesc_run = "<leader>1 Run"
+let g:WhichKeyDesc_debug = "<leader>2 Debug"
+let g:WhichKeyDesc_stop = "<leader>0 Stop"
+
+" navigation
+map <C-i> <Action>(Back)
+map <C-o> <Action>(Forward)
+
+" types/structure
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gh <Action>(ShowHoverInfo)
+nmap go <Action>(FileStructurePopup)
+
+""" Split
+map sh :set nosplitright<CR>:vsplit<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sk :set nosplitbelow<CR>:split<CR>
+map sl :set splitright<CR>:vsplit<CR>
+
+" Jump between splits
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+" Cycle in splits
+map <leader>w <C-w>w
+
+""" My remaps
+" select until the end of line
+nnoremap Y y$
+" go to the start of the line
+map H _
+" go to the end of the line
+map L g_
+" move one screen down
+map J <C-d>
+" move one screen up
+map K <C-u>
+" Redo mapping
+map U <C-R>
+" New line remapings
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
+" move lines, alt + j/k
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+
+" toggle which-key plugin
+let s:whichKeyEnabled = 0
+function! WhichKeyToggle()
+  if s:whichKeyEnabled
+    set which-key!
+    set notimeout!
+    let s:whichKeyEnabled = 0
+  else
+    set which-key
+    set notimeout
+    let s:whichKeyEnabled = 1
+  endif
+endfunction
+
+nnoremap <leader>8 :call WhichKeyToggle()<cr>
+let g:WhichKeyDesc_toggle_which_key = "<leader>8 Toggle WhichKey"
+
+" source
+:map <leader>9 <Action>(IdeaVim.ReloadVimRc.reload)
+let g:WhichKeyDesc_reload_vim_rc = "<leader>9 Reload VimRc"
