@@ -20,11 +20,6 @@ PIP_BIN="$(brew --prefix python)/bin/pip3"
 # Ensure Python and Pip are available in Fish Shell
 FISH_CONFIG="$HOME/.config/fish/config.fish"
 
-if ! grep -q "set -gx PATH $(brew --prefix python)/bin \$PATH" "$FISH_CONFIG"; then
-    echo "Adding Python to Fish config..."
-    echo "set -gx PATH $(brew --prefix python)/bin \$PATH" >> "$FISH_CONFIG"
-fi
-
 # Apply changes
 source "$FISH_CONFIG"
 

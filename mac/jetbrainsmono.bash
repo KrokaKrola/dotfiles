@@ -11,12 +11,6 @@ if ! command -v brew &>/dev/null; then
     exit 1
 fi
 
-# Ensure Homebrew Cask Fonts is installed
-if ! brew tap | grep -q "homebrew/cask-fonts"; then
-    echo "Adding Homebrew Cask Fonts..."
-    brew tap homebrew/cask-fonts
-fi
-
 # Check if the font is already installed
 if brew list --cask | grep -q "font-jetbrains-mono-nerd-font"; then
     echo "JetBrains Mono Nerd Font is already installed. Skipping installation."

@@ -16,11 +16,6 @@ fi
 # Configure zoxide for Fish
 FISH_CONFIG="$HOME/.config/fish/config.fish"
 
-if ! grep -q "zoxide init fish | source" "$FISH_CONFIG"; then
-    echo "Configuring zoxide for Fish..."
-    echo "zoxide init fish | source" >> "$FISH_CONFIG"
-fi
-
 # Apply changes
 source "$FISH_CONFIG"
 
