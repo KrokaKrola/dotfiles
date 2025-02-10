@@ -8,7 +8,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # List of scripts to execute
 SCRIPTS=(
-    "$SCRIPT_DIR/common/ideavimrc.bash"
     "$SCRIPT_DIR/mac/brew.bash"
     "$SCRIPT_DIR/mac/fish.bash"
     "$SCRIPT_DIR/mac/node.bash"
